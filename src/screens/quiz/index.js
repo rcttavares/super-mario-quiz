@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
-import Lottie from 'react-lottie';
 import loadingAnimation from '../animations/loading.json';
 
 import QuizBackground from '../../components/QuizBackground';
@@ -13,6 +13,8 @@ import Widget from '../../components/Widget';
 import GitHubCorner from '../../components/GitHubCorner';
 import Button from '../../components/Button';
 import BackLinkArrow from '../../components/BackLinkArrow';
+
+const Lottie = dynamic(() => import('react-lottie'), { ssr: false });
 
 function QuestionWidget({
   question,
