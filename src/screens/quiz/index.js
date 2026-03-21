@@ -2,7 +2,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
-import Lottie from 'react-lottie';
+import Lottie from 'lottie-react';
 import loadingAnimation from '../animations/loading.json';
 
 import QuizBackground from '../../components/QuizBackground';
@@ -111,18 +111,14 @@ function QuestionWidget({
 }
 
 function LoadingWidget() {
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: loadingAnimation,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-    },
-  };
-
   return (
     <Lottie
-      options={defaultOptions}
+      loop
+      autoplay
+      animationData={loadingAnimation}
+      rendererSettings={{
+        preserveAspectRatio: 'xMidYMid slice',
+      }}
       height={200}
       width={200}
     />
