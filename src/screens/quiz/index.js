@@ -1,18 +1,18 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import Head from 'next/head';
 import { motion } from 'framer-motion';
 import Lottie from 'lottie-react';
+import Head from 'next/head';
+import React from 'react';
 import loadingAnimation from '../animations/loading.json';
 
+import AlternativesForm from '../../components/AlternativesForm';
+import BackLinkArrow from '../../components/BackLinkArrow';
+import Button from '../../components/Button';
+import GitHubCorner from '../../components/GitHubCorner';
 import QuizBackground from '../../components/QuizBackground';
 import QuizContainer from '../../components/QuizContainer';
-import AlternativesForm from '../../components/AlternativesForm';
 import QuizLogo from '../../components/QuizLogo';
 import Widget from '../../components/Widget';
-import GitHubCorner from '../../components/GitHubCorner';
-import Button from '../../components/Button';
-import BackLinkArrow from '../../components/BackLinkArrow';
 
 function QuestionWidget({
   question,
@@ -21,7 +21,8 @@ function QuestionWidget({
   onSubmit,
   addResult,
 }) {
-  const [selectedAlternative, setSelectedAlternative] = React.useState(undefined);
+  const [selectedAlternative, setSelectedAlternative] =
+    React.useState(undefined);
   const [isQuestionSubmited, setIsQuestionSubmited] = React.useState(false);
   const isCorrect = selectedAlternative === question.answer;
   const questionId = `question__${questionIndex}`;
@@ -35,20 +36,18 @@ function QuestionWidget({
         show: { opacity: 1 },
         hidden: { opacity: 0 },
       }}
-      initial="hidden"
-      animate="show"
+      initial='hidden'
+      animate='show'
     >
       <Widget.Header>
-        <BackLinkArrow href="/" />
+        <BackLinkArrow href='/' />
 
-        <h3>
-          {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
-        </h3>
+        <h3>{`Pergunta ${questionIndex + 1} de ${totalQuestions}`}</h3>
       </Widget.Header>
 
       <img
         src={question.image}
-        alt="GIFs"
+        alt='GIFs'
         style={{
           width: '100%',
           height: '150px',
@@ -80,7 +79,7 @@ function QuestionWidget({
 
             return (
               <Widget.Topic
-                as="label"
+                as='label'
                 key={alternativeId}
                 htmlFor={alternativeId}
                 data-selected={isSelected}
@@ -91,14 +90,14 @@ function QuestionWidget({
                   id={alternativeId}
                   name={questionId}
                   onChange={() => setSelectedAlternative(alternativeIndex)}
-                  type="radio"
+                  type='radio'
                 />
                 {alternative}
               </Widget.Topic>
             );
           })}
 
-          <Button type="submit" disabled={!hasAlternativeSelected}>
+          <Button type='submit' disabled={!hasAlternativeSelected}>
             Confirmar
           </Button>
 
@@ -134,17 +133,14 @@ function ResultWidget({ results }) {
         show: { opacity: 1 },
         hidden: { opacity: 0 },
       }}
-      initial="hidden"
-      animate="show"
+      initial='hidden'
+      animate='show'
     >
-      <Widget.Header>
-        Resultado
-      </Widget.Header>
+      <Widget.Header>Resultado</Widget.Header>
 
       <Widget.Content>
         <p>
-          Você acertou
-          {' '}
+          Você acertou{' '}
           {results.reduce((somatoriaAtual, resultAtual) => {
             const isAcerto = resultAtual === true;
 
@@ -153,22 +149,14 @@ function ResultWidget({ results }) {
             }
 
             return somatoriaAtual;
-          }, 0)}
-          {' '}
+          }, 0)}{' '}
           perguntas
         </p>
 
         <ul>
           {results.map((result, index) => (
             <li key={`result__${result}`}>
-              #
-              {index + 1}
-              {' '}
-              Resultado:
-              {' '}
-              {result === true
-                ? 'Acertou'
-                : 'Errou'}
+              #{index + 1} Resultado: {result === true ? 'Acertou' : 'Errou'}
             </li>
           ))}
         </ul>
@@ -233,10 +221,12 @@ export default function QuizPage({ externalQuestions, externalBg }) {
 
         {secreenState === secreenStates.LOADING && <LoadingWidget />}
 
-        {secreenState === secreenStates.RESULT && <ResultWidget results={results} />}
+        {secreenState === secreenStates.RESULT && (
+          <ResultWidget results={results} />
+        )}
       </QuizContainer>
 
-      <GitHubCorner projectUrl="https://github.com/rcttavares" />
+      <GitHubCorner projectUrl='https://github.com/rcttavares' />
     </QuizBackground>
   );
 }

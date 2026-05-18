@@ -1,5 +1,9 @@
-import React from 'react';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import isPropValid from '@emotion/is-prop-valid';
+import {
+  createGlobalStyle,
+  StyleSheetManager,
+  ThemeProvider,
+} from 'styled-components';
 import db from '../db.json';
 import './_app.css';
 
@@ -35,11 +39,13 @@ const { theme } = db;
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <StyleSheetManager shouldForwardProp={isPropValid}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </StyleSheetManager>
     </>
   );
 }
