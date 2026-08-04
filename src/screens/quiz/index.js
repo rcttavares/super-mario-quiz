@@ -28,7 +28,8 @@ function QuestionWidget({
   onSubmit,
   addResult,
 }) {
-  const [selectedAlternative, setSelectedAlternative] = React.useState(undefined);
+  const [selectedAlternative, setSelectedAlternative] =
+    React.useState(undefined);
   const [isQuestionSubmited, setIsQuestionSubmited] = React.useState(false);
   const isCorrect = selectedAlternative === question.answer;
   const questionId = `question__${questionIndex}`;
@@ -42,18 +43,18 @@ function QuestionWidget({
         show: { opacity: 1 },
         hidden: { opacity: 0 },
       }}
-      initial="hidden"
-      animate="show"
+      initial='hidden'
+      animate='show'
     >
       <Widget.Header>
-        <BackLinkArrow href="/" />
+        <BackLinkArrow href='/' />
 
         <h3>{`Pergunta ${questionIndex + 1} de ${totalQuestions}`}</h3>
       </Widget.Header>
 
       <img
         src={question.image}
-        alt="GIFs"
+        alt='GIFs'
         style={{
           width: '100%',
           height: '150px',
@@ -72,7 +73,10 @@ function QuestionWidget({
             setIsQuestionSubmited(true);
             setTimeout(() => {
               onSubmit();
-              addResult(isCorrect);
+              addResult({
+                questionIndex,
+                isCorrect,
+              });
               setIsQuestionSubmited(false);
               setSelectedAlternative(undefined);
             }, 4 * 1000);
@@ -85,7 +89,7 @@ function QuestionWidget({
 
             return (
               <Widget.Topic
-                as="label"
+                as='label'
                 key={alternativeId}
                 htmlFor={alternativeId}
                 data-selected={isSelected}
@@ -96,14 +100,14 @@ function QuestionWidget({
                   id={alternativeId}
                   name={questionId}
                   onChange={() => setSelectedAlternative(alternativeIndex)}
-                  type="radio"
+                  type='radio'
                 />
                 {alternative}
               </Widget.Topic>
             );
           })}
 
-          <Button type="submit" disabled={!hasAlternativeSelected}>
+          <Button type='submit' disabled={!hasAlternativeSelected}>
             Confirmar
           </Button>
 
@@ -147,37 +151,31 @@ function ResultWidget({ results }) {
         show: { opacity: 1 },
         hidden: { opacity: 0 },
       }}
-      initial="hidden"
-      animate="show"
+      initial='hidden'
+      animate='show'
     >
       <Widget.Header>Resultado</Widget.Header>
 
       <Widget.Content>
         <p>
-          Você acertou
-          {' '}
+          Você acertou{' '}
           {results.reduce((somatoriaAtual, resultAtual) => {
-            const isAcerto = resultAtual === true;
+            const isAcerto = resultAtual.isCorrect === true;
 
             if (isAcerto) {
               return somatoriaAtual + 1;
             }
 
             return somatoriaAtual;
-          }, 0)}
-          {' '}
+          }, 0)}{' '}
           perguntas
         </p>
 
         <ul>
-          {results.map((result, index) => (
-            <li key={`result__${result}`}>
-              #
-              {index + 1}
-              {' '}
-              Resultado:
-              {' '}
-              {result === true ? 'Acertou' : 'Errou'}
+          {results.map((result) => (
+            <li key={`result__${result.questionIndex}`}>
+              #{result.questionIndex + 1} Resultado:{' '}
+              {result.isCorrect === true ? 'Acertou' : 'Errou'}
             </li>
           ))}
         </ul>
@@ -187,7 +185,12 @@ function ResultWidget({ results }) {
 }
 
 ResultWidget.propTypes = {
-  results: PropTypes.arrayOf(PropTypes.bool).isRequired,
+  results: PropTypes.arrayOf(
+    PropTypes.shape({
+      isCorrect: PropTypes.bool.isRequired,
+      questionIndex: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
 };
 
 const secreenStates = {
@@ -222,7 +225,7 @@ export default function QuizPage({ externalQuestions, externalBg }) {
   }
 
   function addResult(result) {
-    setResults([...results, result]);
+    setResults((resultsState) => [...resultsState, result]);
   }
 
   return (
@@ -251,7 +254,7 @@ export default function QuizPage({ externalQuestions, externalBg }) {
         )}
       </QuizContainer>
 
-      <GitHubCorner projectUrl="https://github.com/rcttavares" />
+      <GitHubCorner projectUrl='https://github.com/rcttavares' />
     </QuizBackground>
   );
 }
