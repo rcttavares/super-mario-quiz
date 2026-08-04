@@ -48,7 +48,12 @@ const SVGWrapper = styled.svg`
 export default function GitHubCorner({ projectUrl }) {
   return (
     <Wrapper>
-      <a href={projectUrl} target="_blank" rel="noreferrer">
+      <a
+        href={projectUrl}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Abrir perfil no GitHub"
+      >
         <SVGWrapper
           className="githubCorner"
           width="80"

@@ -1,4 +1,5 @@
 import isPropValid from '@emotion/is-prop-valid';
+import React from 'react';
 import {
   createGlobalStyle,
   StyleSheetManager,
@@ -38,14 +39,12 @@ const { theme } = db;
 // eslint-disable-next-line react/prop-types
 export default function App({ Component, pageProps }) {
   return (
-    <>
-      <StyleSheetManager shouldForwardProp={isPropValid}>
-        <ThemeProvider theme={theme}>
-          <GlobalStyle />
-          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </StyleSheetManager>
-    </>
+    <StyleSheetManager shouldForwardProp={isPropValid}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </StyleSheetManager>
   );
 }
