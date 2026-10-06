@@ -28,8 +28,7 @@ function QuestionWidget({
   onSubmit,
   addResult,
 }) {
-  const [selectedAlternative, setSelectedAlternative] =
-    React.useState(undefined);
+  const [selectedAlternative, setSelectedAlternative] = React.useState(undefined);
   const [isQuestionSubmited, setIsQuestionSubmited] = React.useState(false);
   const isCorrect = selectedAlternative === question.answer;
   const questionId = `question__${questionIndex}`;
@@ -43,18 +42,18 @@ function QuestionWidget({
         show: { opacity: 1 },
         hidden: { opacity: 0 },
       }}
-      initial='hidden'
-      animate='show'
+      initial="hidden"
+      animate="show"
     >
       <Widget.Header>
-        <BackLinkArrow href='/' />
+        <BackLinkArrow href="/" />
 
         <h3>{`Pergunta ${questionIndex + 1} de ${totalQuestions}`}</h3>
       </Widget.Header>
 
       <img
         src={question.image}
-        alt='GIFs'
+        alt="GIFs"
         style={{
           width: '100%',
           height: '150px',
@@ -89,7 +88,7 @@ function QuestionWidget({
 
             return (
               <Widget.Topic
-                as='label'
+                as="label"
                 key={alternativeId}
                 htmlFor={alternativeId}
                 data-selected={isSelected}
@@ -100,14 +99,14 @@ function QuestionWidget({
                   id={alternativeId}
                   name={questionId}
                   onChange={() => setSelectedAlternative(alternativeIndex)}
-                  type='radio'
+                  type="radio"
                 />
                 {alternative}
               </Widget.Topic>
             );
           })}
 
-          <Button type='submit' disabled={!hasAlternativeSelected}>
+          <Button type="submit" disabled={!hasAlternativeSelected}>
             Confirmar
           </Button>
 
@@ -151,14 +150,15 @@ function ResultWidget({ results }) {
         show: { opacity: 1 },
         hidden: { opacity: 0 },
       }}
-      initial='hidden'
-      animate='show'
+      initial="hidden"
+      animate="show"
     >
       <Widget.Header>Resultado</Widget.Header>
 
       <Widget.Content>
         <p>
-          Você acertou{' '}
+          Você acertou
+          {' '}
           {results.reduce((somatoriaAtual, resultAtual) => {
             const isAcerto = resultAtual.isCorrect === true;
 
@@ -167,14 +167,19 @@ function ResultWidget({ results }) {
             }
 
             return somatoriaAtual;
-          }, 0)}{' '}
+          }, 0)}
+          {' '}
           perguntas
         </p>
 
         <ul>
           {results.map((result) => (
             <li key={`result__${result.questionIndex}`}>
-              #{result.questionIndex + 1} Resultado:{' '}
+              #
+              {result.questionIndex + 1}
+              {' '}
+              Resultado:
+              {' '}
               {result.isCorrect === true ? 'Acertou' : 'Errou'}
             </li>
           ))}
@@ -254,7 +259,7 @@ export default function QuizPage({ externalQuestions, externalBg }) {
         )}
       </QuizContainer>
 
-      <GitHubCorner projectUrl='https://github.com/rcttavares' />
+      <GitHubCorner projectUrl="https://github.com/rcttavares" />
     </QuizBackground>
   );
 }
