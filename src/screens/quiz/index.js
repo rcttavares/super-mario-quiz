@@ -44,7 +44,7 @@ function QuestionWidget({ question, questionIndex, totalQuestions, onSubmit, add
         <h3>{`Pergunta ${questionIndex + 1} de ${totalQuestions}`}</h3>
       </Widget.Header>
 
-      <img
+      <Image
         src={question.image}
         alt="GIFs"
         style={{

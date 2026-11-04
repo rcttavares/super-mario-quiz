@@ -13,6 +13,7 @@ A Next.js quiz app themed around Super Mario, built with styled-components.
 - Next.js
 - React
 - styled-components
+- Biome (linting and formatting)
 
 ## Requirements
 
@@ -45,13 +46,8 @@ yarn start
 - `yarn dev` - Run the development server (webpack)
 - `yarn build` - Build for production
 - `yarn start` - Start the production server
-- `yarn lint` - Run ESLint
+- `yarn lint` - Lint and format the code with Biome (applies safe fixes)
 
 ## Data
 
 Quiz data lives in `db.json`.
-
-## Notes
-
-- This project uses `styled-components` v6 with `@emotion/is-prop-valid` to avoid invalid DOM props.
-- A `resolutions` pin is used for `postcss` to address a known security advisory.

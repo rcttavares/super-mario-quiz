@@ -15,11 +15,11 @@ const FooterWrapper = styled.footer`
   a {
     color: white;
     text-decoration: none;
-    transition: .3s;
+    transition: 0.3s;
 
     &:hover,
     &:focus {
-      opacity: .5;
+      opacity: 0.5;
     }
 
     span {
@@ -32,7 +32,7 @@ export default function Footer(props) {
   return (
     <FooterWrapper {...props}>
       <a href="https://www.alura.com.br/">
-        <img
+        <Image
           src="https://www.alura.com.br/assets/img/alura-logo-white.1570550707.svg"
           alt="Logo Alura"
         />
