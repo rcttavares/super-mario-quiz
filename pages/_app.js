@@ -1,10 +1,5 @@
 import isPropValid from '@emotion/is-prop-valid';
-import React from 'react';
-import {
-  createGlobalStyle,
-  StyleSheetManager,
-  ThemeProvider,
-} from 'styled-components';
+import { createGlobalStyle, StyleSheetManager, ThemeProvider } from 'styled-components';
 import db from '../db.json';
 import './_app.css';
 

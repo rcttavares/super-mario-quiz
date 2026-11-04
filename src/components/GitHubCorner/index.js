@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -48,12 +47,7 @@ const SVGWrapper = styled.svg`
 export default function GitHubCorner({ projectUrl }) {
   return (
     <Wrapper>
-      <a
-        href={projectUrl}
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Abrir perfil no GitHub"
-      >
+      <a href={projectUrl} target="_blank" rel="noreferrer" aria-label="Abrir perfil no GitHub">
         <SVGWrapper
           className="githubCorner"
           width="80"

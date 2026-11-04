@@ -1,18 +1,18 @@
-import React from 'react';
+import { motion } from 'framer-motion';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { motion } from 'framer-motion';
+import React from 'react';
 
 import db from '../db.json';
+import Button from '../src/components/Button';
+import Footer from '../src/components/Footer';
+import GitHubCorner from '../src/components/GitHubCorner';
+import Input from '../src/components/Input';
+import Link from '../src/components/Link';
 import QuizBackground from '../src/components/QuizBackground';
 import QuizContainer from '../src/components/QuizContainer';
 import QuizLogo from '../src/components/QuizLogo';
 import Widget from '../src/components/Widget';
-import Link from '../src/components/Link';
-import Footer from '../src/components/Footer';
-import GitHubCorner from '../src/components/GitHubCorner';
-import Input from '../src/components/Input';
-import Button from '../src/components/Button';
 
 export default function Home() {
   const router = useRouter();
@@ -43,10 +43,11 @@ export default function Home() {
           <Widget.Content>
             <p>{db.description}</p>
 
-            <form onSubmit={(infosDoEvento) => {
-              infosDoEvento.preventDefault();
-              router.push(`/quiz?name=${name}`);
-            }}
+            <form
+              onSubmit={(infosDoEvento) => {
+                infosDoEvento.preventDefault();
+                router.push(`/quiz?name=${name}`);
+              }}
             >
               <Input
                 onChange={(infosDoEvento) => setName(infosDoEvento.target.value)}
@@ -85,10 +86,7 @@ export default function Home() {
 
                 return (
                   <li key={linkExterno}>
-                    <Widget.Topic
-                      as={Link}
-                      href={`/quiz/${projectName}___${githubUser}`}
-                    >
+                    <Widget.Topic as={Link} href={`/quiz/${projectName}___${githubUser}`}>
                       {`${githubUser}/${projectName}`}
                     </Widget.Topic>
                   </li>

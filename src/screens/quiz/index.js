@@ -3,8 +3,6 @@ import Lottie from 'lottie-react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import React from 'react';
-import loadingAnimation from '../animations/loading.json';
-
 import AlternativesForm from '../../components/AlternativesForm';
 import BackLinkArrow from '../../components/BackLinkArrow';
 import Button from '../../components/Button';
@@ -13,6 +11,7 @@ import QuizBackground from '../../components/QuizBackground';
 import QuizContainer from '../../components/QuizContainer';
 import QuizLogo from '../../components/QuizLogo';
 import Widget from '../../components/Widget';
+import loadingAnimation from '../animations/loading.json';
 
 const questionPropType = PropTypes.shape({
   answer: PropTypes.number.isRequired,
@@ -21,13 +20,7 @@ const questionPropType = PropTypes.shape({
   title: PropTypes.string.isRequired,
 });
 
-function QuestionWidget({
-  question,
-  questionIndex,
-  totalQuestions,
-  onSubmit,
-  addResult,
-}) {
+function QuestionWidget({ question, questionIndex, totalQuestions, onSubmit, addResult }) {
   const [selectedAlternative, setSelectedAlternative] = React.useState(undefined);
   const [isQuestionSubmited, setIsQuestionSubmited] = React.useState(false);
   const isCorrect = selectedAlternative === question.answer;
@@ -157,8 +150,7 @@ function ResultWidget({ results }) {
 
       <Widget.Content>
         <p>
-          Você acertou
-          {' '}
+          Você acertou{' '}
           {results.reduce((somatoriaAtual, resultAtual) => {
             const isAcerto = resultAtual.isCorrect === true;
 
@@ -167,19 +159,14 @@ function ResultWidget({ results }) {
             }
 
             return somatoriaAtual;
-          }, 0)}
-          {' '}
+          }, 0)}{' '}
           perguntas
         </p>
 
         <ul>
           {results.map((result) => (
             <li key={`result__${result.questionIndex}`}>
-              #
-              {result.questionIndex + 1}
-              {' '}
-              Resultado:
-              {' '}
+              #{result.questionIndex + 1} Resultado:{' '}
               {result.isCorrect === true ? 'Acertou' : 'Errou'}
             </li>
           ))}
@@ -254,9 +241,7 @@ export default function QuizPage({ externalQuestions, externalBg }) {
 
         {secreenState === secreenStates.LOADING && <LoadingWidget />}
 
-        {secreenState === secreenStates.RESULT && (
-          <ResultWidget results={results} />
-        )}
+        {secreenState === secreenStates.RESULT && <ResultWidget results={results} />}
       </QuizContainer>
 
       <GitHubCorner projectUrl="https://github.com/rcttavares" />

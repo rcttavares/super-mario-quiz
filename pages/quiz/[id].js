@@ -1,15 +1,10 @@
-/* eslint-disable react/prop-types */
-import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import QuizScreen from '../../src/screens/quiz';
 
 export default function QuizDaGaleraPage({ dbExterno }) {
   return (
     <ThemeProvider theme={dbExterno.theme}>
-      <QuizScreen
-        externalQuestions={dbExterno.questions}
-        externalBg={dbExterno.bg}
-      />
+      <QuizScreen externalQuestions={dbExterno.questions} externalBg={dbExterno.bg} />
     </ThemeProvider>
   );
 }
