@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import Lottie from 'lottie-react';
 import Head from 'next/head';
+import Image from 'next/image';
 import PropTypes from 'prop-types';
 import React from 'react';
 import AlternativesForm from '../../components/AlternativesForm';
@@ -44,17 +45,24 @@ function QuestionWidget({ question, questionIndex, totalQuestions, onSubmit, add
         <h3>{`Pergunta ${questionIndex + 1} de ${totalQuestions}`}</h3>
       </Widget.Header>
 
-      <Image
-        src={question.image}
-        alt="GIFs"
+      <div
         style={{
           width: '100%',
           height: '150px',
-          objectFit: 'cover',
           position: 'relative',
           right: '4px',
         }}
-      />
+      >
+        <Image
+          src={question.image}
+          alt="GIFs"
+          fill
+          sizes="100vw"
+          loading="eager"
+          unoptimized
+          style={{ objectFit: 'cover' }}
+        />
+      </div>
 
       <Widget.Content>
         <p>{question.title}</p>

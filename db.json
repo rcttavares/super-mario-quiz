@@ -1,67 +1,47 @@
 {
-    "bg": "https://c4.wallpaperflare.com/wallpaper/88/590/356/club-nintendo-nintendo-nintendo-entertainment-system-super-mario-wallpaper-preview.jpg",
-    "title": "Você conhece o Super Mario?",
-    "description": "Você descubra qual dos personagens principais nesse quiz.",
-    "questions": [
-        {
-            "image": "https://media.giphy.com/media/9JeJyQu07mvhG2p87z/giphy.gif",
-            "title": "Quem é o cavalinho do Mario?",
-            "answer": 1,
-            "alternatives": [
-                "Parakarry",
-                "Yoshi",
-                "Chain Chomp",
-                "Kooper"
-            ]
-        },
-        {
-            "image": "https://media.giphy.com/media/vi2ciYHi5u0FO/giphy.gif",
-            "title": "Qual é o nome de irmão do Mario?",
-            "answer": 3,
-            "alternatives": [
-                "Waluigi",
-                "Luidi",
-                "Loige",
-                "Luigi"
-            ]
-        },
-        {
-            "image": "https://media.giphy.com/media/6UDorPg1oGRQ4/giphy.gif",
-            "title": "O que é o Bowser?",
-            "answer": 0,
-            "alternatives": [
-                "Tartaruga",
-                "Dinossauro",
-                "Jacaré",
-                "Dragão"
-            ]
-        },
-        {
-            "image": "https://media.giphy.com/media/WuDCNq5d9o1mU/giphy.gif",
-            "title": "Quem é apaixonada por Mario?",
-            "answer": 2,
-            "alternatives": [
-                "Daisy",
-                "Rosalina",
-                "Peach",
-                "Pauline"
-            ]
-        }
-    ],
-    "external": [
-        "https://aluraquiz-base.alura-challenges.vercel.app/",
-        "https://aluraquiz-css.omariosouto.vercel.app/"
-    ],
-    "theme": {
-        "colors": {
-            "primary": "#D54A36",
-            "secondary": "#75B65D",
-            "mainBg": "#2471A3",
-            "contrastText": "#FFFFFF",
-            "wrong": "#EFD249",
-            "success": "#4CAF50",
-            "error": "#FF5722"
-        },
-        "borderRadius": "4px"
+  "bg": "https://c4.wallpaperflare.com/wallpaper/88/590/356/club-nintendo-nintendo-nintendo-entertainment-system-super-mario-wallpaper-preview.jpg",
+  "title": "Você conhece o Super Mario?",
+  "description": "Você descubra qual dos personagens principais nesse quiz.",
+  "questions": [
+    {
+      "image": "/images/1.gif",
+      "title": "Quem é o cavalinho do Mario?",
+      "answer": 1,
+      "alternatives": ["Parakarry", "Yoshi", "Chain Chomp", "Kooper"]
+    },
+    {
+      "image": "/images/2.gif",
+      "title": "Qual é o nome de irmão do Mario?",
+      "answer": 3,
+      "alternatives": ["Waluigi", "Luidi", "Loige", "Luigi"]
+    },
+    {
+      "image": "/images/3.gif",
+      "title": "O que é o Bowser?",
+      "answer": 0,
+      "alternatives": ["Tartaruga", "Dinossauro", "Jacaré", "Dragão"]
+    },
+    {
+      "image": "/images/4.gif",
+      "title": "Quem é apaixonada por Mario?",
+      "answer": 2,
+      "alternatives": ["Daisy", "Rosalina", "Peach", "Pauline"]
     }
+  ],
+  "external": [
+    "https://aluraquiz-base.alura-challenges.vercel.app/",
+    "https://aluraquiz-css.omariosouto.vercel.app/"
+  ],
+  "theme": {
+    "colors": {
+      "primary": "#D54A36",
+      "secondary": "#75B65D",
+      "mainBg": "#2471A3",
+      "contrastText": "#FFFFFF",
+      "wrong": "#EFD249",
+      "success": "#4CAF50",
+      "error": "#FF5722"
+    },
+    "borderRadius": "4px"
+  }
 }

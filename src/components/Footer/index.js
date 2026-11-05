@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styled from 'styled-components';
 
 const FooterWrapper = styled.footer`
@@ -35,6 +36,9 @@ export default function Footer(props) {
         <Image
           src="https://www.alura.com.br/assets/img/alura-logo-white.1570550707.svg"
           alt="Logo Alura"
+          width={58}
+          height={27}
+          unoptimized
         />
       </a>
       <p>
